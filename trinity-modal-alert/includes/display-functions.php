@@ -3,7 +3,7 @@
 function trinity_modal_content_page() {
     $options = get_option('tt_modal');
 
-    if(is_page($options[page_modal]) && $options[enablePage] == true) {
+    if(is_page($options[page_modal]) && !empty($options[page_modal]) && $options[enablePage] == true) {
 
         echo '        
         <div id="tallModal" class="modal modal-wide fade">
@@ -31,7 +31,7 @@ add_action( 'wp_footer', 'trinity_modal_content_page');
 function trinity_modal_content_post() {
     $options = get_option('tt_modal');
 
-    if(is_single($options[post_modal]) && $options[enablePost] == true) {
+    if(is_single($options[post_modal]) && !empty($options[post_modal]) && $options[enablePost] == true) {
         echo '        
         <div id="tallModal" class="modal modal-wide fade">
         <div class="modal-dialog">

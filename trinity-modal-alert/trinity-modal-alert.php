@@ -41,8 +41,7 @@ add_action('admin_menu', 'trinity_modal_menu');
  *
  */
 function plugin_name_scripts()
-{
-    // wp_enqueue_script('jquery-min', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, true);
+{   
     wp_enqueue_script('jquery-min', 'https://code.jquery.com/jquery-3.4.1.min.js', array(), null, true);
 }
 add_action('init', 'plugin_name_scripts');
@@ -55,12 +54,10 @@ function trinity_modal_scripts()
 {
     wp_deregister_script('jquery');
     wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', array(), null, false);
-    // wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', array(), null, false);
     wp_enqueue_script( 'modaljs' , plugins_url( '/js/bootstrap.min.js',  __FILE__), array( 'jquery' ), '3.3.7', true );
     wp_enqueue_script('main', plugins_url('js/main.js', __FILE__), array('jquery'), null, false);
     // css
     wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
-    wp_enqueue_style('tt-modal', plugins_url('css/style.css', __FILE__));
 }
 add_action('wp_print_scripts', 'trinity_modal_scripts');
 
@@ -70,8 +67,7 @@ add_action('wp_print_scripts', 'trinity_modal_scripts');
  *
  */
 function trinity_modal_init()
-{
-    //  register_setting( 'tt_modal_settings', 'tt_modal', 'tt_modal_validate' );   add validation
+{    
     register_setting('tt_modal_settings', 'tt_modal');
 }
 add_action('admin_init', 'trinity_modal_init');
@@ -137,8 +133,7 @@ function trinity_modal_do_options()
         <td>
         <?php
         foreach ($pages as $page) {
-            ?>
-            <?php //print_r($options[pager]) ?> 
+            ?>            
                 <input 
                 type="checkbox" 
                 name="tt_modal[page_modal][<?php echo $page->ID; ?>]" 
